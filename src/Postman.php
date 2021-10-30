@@ -301,6 +301,6 @@ class Postman
 
     private function saveJsonFile(array $data, string $fileName): void
     {
-        Storage::put($fileName . '.json', json_encode($data, JSON_PRETTY_PRINT));
+        Storage::disk(config('postman.storage_disk'))->put($fileName . '.json', json_encode($data, JSON_PRETTY_PRINT));
     }
 }

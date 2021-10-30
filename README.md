@@ -1,4 +1,4 @@
-#Postman file generator
+# Postman file generator
 
 <p><img src="https://github.com/matijajanc/postman/blob/master/images/postman.png"></p>
 
@@ -38,6 +38,7 @@ Currently it supports bearer token authorization, if you have other wishes pleas
 I used new PHP 8 attributes feature to define new properties I use for postman file generator.
 This is not needed to define for GET, DELETE routes, you provide this Postman attribute only where you want your custom request payload POST, PUT.
 
+### Usages
 
 If no method is provided it calls default factory "definition" method
 
