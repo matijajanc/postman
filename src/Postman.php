@@ -7,17 +7,27 @@ namespace Matijajanc\Postman;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Route as RoutingRoute;
+use Psr\Log\LoggerInterface;
 
 class Postman extends PostmanAbstract
 {
+    public function __construct(
+        private LoggerInterface $logger
+    ) {
+    }
+
     public function generateEnvironmentData(): void
     {
         $data = $this->setEnvironmentInfoBlock();
         $this->setVariable($data, 'host', env('APP_URL'));
-        $token = Auth::guard('api')->attempt([
-            'email' => config('postman.login.username'),
-            'password' => config('postman.login.password'),
-        ]);
+        try {
+            $token = Auth::guard('api')->attempt([
+                'email' => config('postman.login.username'),
+                'password' => config('postman.login.password'),
+            ]);
+        } catch (\Throwable $e) {
+            $this->logger->error('tymon/jwt-auth package not configured correctly.');
+        }
         $this->setVariable($data, 'token', $token ?: 'token');
 
         $this->saveJsonFile($data, 'postman-environment');

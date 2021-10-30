@@ -9,6 +9,13 @@
 composer require ...
 ```
 
+### Config
+
+Publish config file
+```
+php artisan vendor:publish --provider="Matijajanc\Postman\Providers\PostmanServiceProvider"
+```
+
 Update config settings under
 ```
 config/postman.php
@@ -33,6 +40,7 @@ Currently it supports bearer token authorization, if you have other wishes pleas
 ## Requirements
 - Laravel 8 (it works with older version of Laravel also but you need to provide "method" property in Postman attribute definition)
 - PHP ^8.0
+- If you want to use JWT bearer token then you need to configure it first https://jwt-auth.readthedocs.io/en/develop/laravel-installation/
 
 ### PHP 8 attributes
 I used new PHP 8 attributes feature to define new properties I use for postman file generator.
