@@ -1,6 +1,6 @@
 #Postman file generator
 
-<p><img src="https://github.com/matijajanc/postman/-/raw/master/images/postman.png"></p>
+<p><img src="https://github.com/matijajanc/postman/blob/master/images/postman.png"></p>
 
 ### Installation
 
@@ -26,9 +26,9 @@ This command generates 2 files:
 
 Currently it supports bearer token authorization, if you have other wishes please create new issue or pull request on github and I'll add/extend it.
 
-<p><img src="https://github.com/matijajanc/postman/-/raw/master/images/postman_api.png"></p>
+<p><img src="https://github.com/matijajanc/postman/blob/master/images/postman_api.png"></p>
 
-<p><img src="https://github.com/matijajanc/postman/-/raw/master/images/postman_authorization.png"></p>
+<p><img src="https://github.com/matijajanc/postman/blob/master/images/postman_authorization.png"></p>
 
 ## Requirements
 - Laravel 8 (it works with older version of Laravel also but you need to provide "method" property in Postman attribute definition)
@@ -53,7 +53,7 @@ You can override which methods get called with additional "method" property
 public function createContract(Request $request): JsonResponse
 ```
 
-<p><img src="https://github.com/matijajanc/postman/-/raw/master/images/factory.png"></p>
+<p><img src="https://github.com/matijajanc/postman/blob/master/images/factory.png"></p>
 
 You can override body type with property "mode"
 
