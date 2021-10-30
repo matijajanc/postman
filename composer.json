@@ -1,0 +1,28 @@
+{
+    "name": "matijajanc/postman",
+    "description": "Postman file generator",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Matijajanc\\Postman\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Matija Janc",
+            "email": "matija.janc@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Matijajanc\\Postman\\Providers\\PostmanServiceProvider"
+            ]
+        }
+    }
+}
