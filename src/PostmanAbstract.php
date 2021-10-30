@@ -14,11 +14,14 @@ abstract class PostmanAbstract
     protected function getMethodParameters(RoutingRoute $route): array
     {
         $parameters = [];
-        $reflector = new \ReflectionMethod($route->getController(), $route->getActionMethod());
-        foreach ($reflector->getAttributes() as $attributes) {
-            if (str_contains($attributes->getName(), 'Postman')) {
-                $parameters = $attributes->getArguments()[0] ?? [];
+        try {
+            $reflector = new \ReflectionMethod($route->getController(), $route->getActionMethod());
+            foreach ($reflector->getAttributes() as $attributes) {
+                if (str_contains($attributes->getName(), 'Postman')) {
+                    $parameters = $attributes->getArguments()[0] ?? [];
+                }
             }
+        } catch (\Throwable) {
         }
 
         return $parameters;
