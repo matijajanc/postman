@@ -1,6 +1,7 @@
 {
     "name": "matijajanc/postman",
     "description": "Postman file generator",
+    "keywords": ["laravel", "lumen", "postman"],
     "type": "project",
     "license": "MIT",
     "autoload": {
@@ -17,7 +18,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.0",
-        "tymon/jwt-auth": "^1.0"
+        "tymon/jwt-auth": "^1.0",
+        "ext-json": "*"
     },
     "extra": {
         "laravel": {
