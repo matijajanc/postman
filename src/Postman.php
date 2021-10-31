@@ -20,6 +20,7 @@ class Postman extends PostmanAbstract
     {
         $data = $this->setEnvironmentInfoBlock();
         $this->setVariable($data, 'host', env('APP_URL'));
+        $token = null;
         try {
             $token = Auth::guard('api')->attempt([
                 'email' => config('postman.login.username'),
