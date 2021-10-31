@@ -15,7 +15,7 @@ abstract class PostmanAbstract
             return explode('@', $route['action']['uses'])[0] ?? '';
         }
 
-        return $route->getController();
+        return get_class($route->getController());
     }
 
     protected function getMethodName(array|object $route): string
