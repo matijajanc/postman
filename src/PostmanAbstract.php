@@ -154,8 +154,8 @@ abstract class PostmanAbstract
                     $setAuth ? $this->setAuth() : [],
                     $this->setMethod($method),
                     $this->setJsonHeader(),
-                    $this->setBody($data, $mode),
-                    $this->setUrlBlock($uri)
+                    strtoupper($method) === 'GET' ? [] : $this->setBody($data, $mode),
+                    $this->setUrlBlock($uri, strtoupper($method) === 'GET' ? $data : [])
                 )
             ]
         );
@@ -225,16 +225,34 @@ abstract class PostmanAbstract
         return json_encode($data, JSON_PRETTY_PRINT);
     }
 
-    protected function setUrlBlock(string $uri): array
+    protected function setUrlBlock(string $uri, array $query): array
     {
         return [
-            'url' => [
-                'raw' => '{{host}}' . (str_starts_with($uri, '/') ? $uri : '/' . $uri),
-                'protocol' => null,
-                'host' => '{{host}}',
-                'path' => $this->getUriPathArray($uri),
-            ],
+            'url' => array_merge(
+                [
+                    'raw' => '{{host}}' . (str_starts_with($uri, '/') ? $uri : '/' . $uri),
+                    'protocol' => null,
+                    'host' => '{{host}}',
+                    'path' => $this->getUriPathArray($uri),
+                ],
+                $this->getQueryParameters($query),
+            )
         ];
+    }
+
+    protected function getQueryParameters(array $query): array
+    {
+        $queryData = [];
+        if (count($query)) {
+            foreach ($query as $key => $value) {
+                $queryData['query'][] = [
+                    'key' => $key,
+                    'value' => urlencode((string)$value),
+                ];
+            }
+        }
+
+        return $queryData;
     }
 
     protected function setResponse(): array
