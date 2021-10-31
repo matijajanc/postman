@@ -9,18 +9,24 @@
 composer require ...
 ```
 
-### Config
+### Laravel
 
 Publish config file
 ```
 php artisan vendor:publish --provider="Matijajanc\Postman\Providers\PostmanServiceProvider"
 ```
 
-Update config settings under
+### Lumen
+
+add below line to bootstrap/app.php
 ```
-config/postman.php
+$app->register(Matijajanc\Postman\Providers\PostmanLumenServiceProvider::class);
 ```
 
+Publish config file
+```
+cp vendor/matijajanc/postman/config/postman.php config/postman.php
+```
 
 ### Run command to generate Postman files
 ```
@@ -38,7 +44,7 @@ Currently it supports bearer token authorization, if you have other wishes pleas
 <p><img src="https://github.com/matijajanc/postman/blob/master/images/postman_authorization.png"></p>
 
 ## Requirements
-- Laravel 8 (it works with older version of Laravel also but you need to provide "method" property in Postman attribute definition)
+- Laravel 8 & Lumen 8 (it works with older version of Laravel/Lumen also, but you need to provide "method" property in Postman attribute definition)
 - PHP ^8.0
 - If you want to use JWT bearer token then you need to configure it first https://jwt-auth.readthedocs.io/en/develop/laravel-installation/
 

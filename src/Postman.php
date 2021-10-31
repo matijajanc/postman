@@ -41,21 +41,24 @@ class Postman extends PostmanAbstract
 
         /** @var RoutingRoute $route */
         foreach (Route::getRoutes() as $route) {
-            if (!$this->isUriExcluded($route->uri) && str_starts_with($route->uri, config('postman.filter_uri')))
+            $routeUri = $this->getFormattedUri($route->uri ?? $route['uri']);
+            if (!$this->isUriExcluded($routeUri) && str_starts_with($routeUri, config('postman.filter_uri')))
             {
                 // Create folder
-                if (!in_array($this->getFolderName($route->uri), array_column($postmanJson['item'], 'name'), false)) {
-                    $postmanJson['item'][] = ['name' => $this->getFolderName($route->uri)];
+                if (!in_array($this->getFolderName($routeUri), array_column($postmanJson['item'], 'name'), false)) {
+                    $postmanJson['item'][] = ['name' => $this->getFolderName($routeUri)];
                 }
 
-                $parameters = $this->getMethodParameters($route);
-                $postmanJson['item'][$this->getFolderIndex($route->uri, $postmanJson['item'])]['item'][] = $this->setItem(
-                    $route->uri,
-                    $this->getApiName($route->uri),
-                    $route->methods[0],
+                $parameters = $this->getMethodParameters($this->getControllerName($route), $this->getMethodName($route));
+                $postmanJson['item'][$this->getFolderIndex($routeUri, $postmanJson['item'])]['item'][] = $this->setItem(
+                    $routeUri,
+                    $this->getApiName($routeUri),
+                    $route->methods[0] ?? $route['method'],
                     $parameters['mode'] ?? config('postman.default_body_type'),
                     $this->getRequestData($parameters),
-                    $this->addAuthBlock($route->gatherMiddleware()),
+                    $this->addAuthBlock(
+                        is_array($route) ? ($route['action']['middleware'] ?? []) : $route->gatherMiddleware()
+                    ),
                 );
             }
         }

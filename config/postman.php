@@ -47,8 +47,7 @@ return [
     ],
 
     /*
-     * Default disk location of generated Postman files
-     * local, public, s3,...
+     * Default storage location
      */
-    'storage_disk' => 'local',
+    'storage_location' => storage_path(),
 ];

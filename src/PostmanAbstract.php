@@ -4,18 +4,34 @@ declare(strict_types=1);
 
 namespace Matijajanc\Postman;
 
-use Illuminate\Routing\Route as RoutingRoute;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Matijajanc\Postman\Helpers\StringTools;
 
 abstract class PostmanAbstract
 {
-    protected function getMethodParameters(RoutingRoute $route): array
+    protected function getControllerName(array|object $route): string
+    {
+        if (is_array($route)) {
+            return explode('@', $route['action']['uses'])[0] ?? '';
+        }
+
+        return $route->getController();
+    }
+
+    protected function getMethodName(array|object $route): string
+    {
+        if (is_array($route)) {
+            return explode('@', $route['action']['uses'])[1] ?? '';
+        }
+
+        return $route->getActionMethod();
+    }
+
+    protected function getMethodParameters(string $controller, string $method): array
     {
         $parameters = [];
         try {
-            $reflector = new \ReflectionMethod($route->getController(), $route->getActionMethod());
+            $reflector = new \ReflectionMethod($controller, $method);
             foreach ($reflector->getAttributes() as $attributes) {
                 if (str_contains($attributes->getName(), 'Postman')) {
                     $parameters = $attributes->getArguments()[0] ?? [];
@@ -34,7 +50,7 @@ abstract class PostmanAbstract
             $factoryClass = new $parameters['factory'];
             $data = $factoryClass->{method_exists(
                 $parameters['factory'],
-                $parameters['method']
+                $parameters['method'] ?? ''
             ) ? $parameters['method'] : 'definition'}();
         }
 
@@ -54,7 +70,7 @@ abstract class PostmanAbstract
         return $skip;
     }
 
-    protected function addAuthBlock(?array $middlewares): bool
+    protected function addAuthBlock(array $middlewares): bool
     {
         return in_array(config('postman.middleware'), $middlewares, true);
     }
@@ -228,14 +244,14 @@ abstract class PostmanAbstract
         ];
     }
 
-    protected function getUriPathArray(string $url): array
+    protected function getUriPathArray(string $uri): array
     {
-        return explode('/', $url);
+        return explode('/', $this->getFormattedUri($uri));
     }
 
     protected function getFolderName(string $uri): string
     {
-        $removeApiPart = explode('/', $uri);
+        $removeApiPart = explode('/', $this->getFormattedUri($uri));
 
         return ucfirst($removeApiPart[1] ?? 'other');
     }
@@ -257,9 +273,17 @@ abstract class PostmanAbstract
 
         return StringTools::snakeToCamelCase(implode('_', $removeApiPart), true);
     }
+    
+    protected function getFormattedUri(string $uri): string
+    {
+        return str_starts_with($uri, '/') ? substr($uri, 1) : $uri;
+    }
 
     protected function saveJsonFile(array $data, string $fileName): void
     {
-        Storage::disk(config('postman.storage_disk'))->put($fileName . '.json', json_encode($data, JSON_PRETTY_PRINT));
+        file_put_contents(
+            config('postman.storage_location') . '/' . $fileName . '.json',
+            json_encode($data, JSON_PRETTY_PRINT)
+        );
     }
 }
