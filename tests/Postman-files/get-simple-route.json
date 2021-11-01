@@ -1,0 +1,40 @@
+{
+    "info": {
+        "_postman_id": "1ba5613d-2438-4ab3-bba8-e2c3b776bc8d",
+        "name": "Postman",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Get-simple-route",
+            "item": [
+                {
+                    "name": "Getsimpleroute",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{host}}\/api\/get-simple-route",
+                            "protocol": null,
+                            "host": "{{host}}",
+                            "path": [
+                                "api",
+                                "get-simple-route"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}

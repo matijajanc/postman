@@ -9,6 +9,11 @@
             "Matijajanc\\Postman\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Matijajanc\\Postman\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Matija Janc",
@@ -18,8 +23,10 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.0",
-        "tymon/jwt-auth": "^1.0",
         "ext-json": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": ">=6.0"
     },
     "extra": {
         "laravel": {

@@ -1,0 +1,44 @@
+{
+  "info": {
+    "_postman_id": "958b64a5-0a2f-4060-b131-c3f4ef0954c8",
+    "name": "Postman",
+    "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+  },
+  "item": [
+    {
+      "name": "Post-route-with-method-name-and-raw-mode",
+      "item": [
+        {
+          "name": "Postroutewithmethodnameandrawmode",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application\/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application\/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"parameter3\": \"test3\",\n    \"parameter4\": \"test4\"\n}"
+            },
+            "url": {
+              "raw": "{{host}}\/api\/post-route-with-method-name-and-raw-mode",
+              "protocol": null,
+              "host": "{{host}}",
+              "path": [
+                "api",
+                "post-route-with-method-name-and-raw-mode"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

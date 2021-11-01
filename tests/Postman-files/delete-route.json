@@ -1,0 +1,45 @@
+{
+    "info": {
+        "_postman_id": "8a698fc2-65ea-4467-8a57-3d52133b96ef",
+        "name": "Postman",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Delete-route",
+            "item": [
+                {
+                    "name": "Deleteroute{id}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{host}}\/api\/delete-route\/{id}",
+                            "protocol": null,
+                            "host": "{{host}}",
+                            "path": [
+                                "api",
+                                "delete-route",
+                                "{id}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}

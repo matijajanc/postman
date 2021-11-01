@@ -1,0 +1,55 @@
+{
+    "info": {
+        "_postman_id": "bc57a6ea-3067-4f8c-9419-778889b668df",
+        "name": "Postman",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Put-route-without-method-name",
+            "item": [
+                {
+                    "name": "Putroutewithoutmethodname",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "update_parameter1",
+                                    "value": "updated-test",
+                                    "type": ""
+                                },
+                                {
+                                    "key": "update_parameter2",
+                                    "value": "updated-test2",
+                                    "type": ""
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{host}}\/api\/put-route-without-method-name",
+                            "protocol": null,
+                            "host": "{{host}}",
+                            "path": [
+                                "api",
+                                "put-route-without-method-name"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,55 @@
+{
+  "info": {
+    "_postman_id": "6d88fa9c-fb41-40d3-acb3-ea12a7ef49c1",
+    "name": "Postman",
+    "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+  },
+  "item": [
+    {
+      "name": "Post-route-with-method-name",
+      "item": [
+        {
+          "name": "Postroutewithmethodname",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application\/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application\/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "parameter3",
+                  "value": "test3",
+                  "type": ""
+                },
+                {
+                  "key": "parameter4",
+                  "value": "test4",
+                  "type": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{host}}\/api\/post-route-with-method-name",
+              "protocol": null,
+              "host": "{{host}}",
+              "path": [
+                "api",
+                "post-route-with-method-name"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

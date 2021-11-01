@@ -76,6 +76,3 @@ You can override body type with property "mode"
 #[Postman(['factory' => ContractFactory::class, 'method' => 'postCreateContract', 'mode' => 'raw'])]
 public function createContract(Request $request): JsonResponse
 ```
-
-### Todo
-- tests

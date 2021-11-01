@@ -1,0 +1,65 @@
+{
+  "info": {
+    "_postman_id": "3a7e959a-883e-40d0-a2bb-bcc486eff7a1",
+    "name": "Postman",
+    "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+  },
+  "item": [
+    {
+      "name": "Post-route-with-middleware",
+      "item": [
+        {
+          "name": "Postroutewithmiddleware",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application\/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application\/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "parameter1",
+                  "value": "test",
+                  "type": ""
+                },
+                {
+                  "key": "parameter2",
+                  "value": "test2",
+                  "type": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{host}}\/api\/post-route-with-middleware",
+              "protocol": null,
+              "host": "{{host}}",
+              "path": [
+                "api",
+                "post-route-with-middleware"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

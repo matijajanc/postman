@@ -1,0 +1,50 @@
+{
+    "info": {
+        "_postman_id": "a4f28b09-c65d-4043-b6fd-7230844ca9ba",
+        "name": "Postman",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Get-route-with-query-parameters",
+            "item": [
+                {
+                    "name": "Getroutewithqueryparameters",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{host}}\/api\/get-route-with-query-parameters",
+                            "protocol": null,
+                            "host": "{{host}}",
+                            "path": [
+                                "api",
+                                "get-route-with-query-parameters"
+                            ],
+                            "query": [
+                                {
+                                    "key": "parameter1",
+                                    "value": "test"
+                                },
+                                {
+                                    "key": "parameter2",
+                                    "value": "test2"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
