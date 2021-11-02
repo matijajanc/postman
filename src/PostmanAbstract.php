@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Matijajanc\Postman;
 
 use Illuminate\Support\Str;
-use Matijajanc\Postman\Helpers\StringTools;
 
 abstract class PostmanAbstract
 {
@@ -211,7 +210,7 @@ abstract class PostmanAbstract
         $structure = [];
         foreach ($data as $key => $value) {
             $structure[] = [
-                'key' => StringTools::camelToSnakeCase($key),
+                'key' => Str::snake($key),
                 'value' => $value,
                 'type' => '',
             ];
@@ -289,7 +288,7 @@ abstract class PostmanAbstract
         $removeApiPart = explode('/', $uri);
         unset($removeApiPart[0]);
 
-        return StringTools::snakeToCamelCase(implode('_', $removeApiPart), true);
+        return lcfirst(Str::camel(implode('_', $removeApiPart)));
     }
     
     protected function getFormattedUri(string $uri): string

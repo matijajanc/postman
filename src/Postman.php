@@ -26,7 +26,7 @@ class Postman extends PostmanAbstract
                 'email' => config('postman.login.username'),
                 'password' => config('postman.login.password'),
             ]);
-        } catch (\Throwable $e) {
+        } catch (\Throwable) {
             $this->logger->error('tymon/jwt-auth package not configured correctly.');
         }
         $this->setVariable($data, 'token', $token ?: 'token');
@@ -39,6 +39,10 @@ class Postman extends PostmanAbstract
         $postmanJson = $this->setInfoBlock();
         $postmanJson['item'] = [];
 
+        /**
+         * Laravel returns object for Route::getRoutes()
+         * Lumen returns an array for Route::getRoutes()
+         */
         /** @var RoutingRoute $route */
         foreach (Route::getRoutes() as $route) {
             $routeUri = $this->getFormattedUri($route->uri ?? $route['uri']);

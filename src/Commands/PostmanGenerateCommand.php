@@ -42,6 +42,6 @@ class PostmanGenerateCommand extends Command
         $this->postman->generateEnvironmentData();
         $this->postman->generatePostmanJson();
 
-        $this->error('Postman files generated.');
+        $this->info('Postman files generated.');
     }
 }

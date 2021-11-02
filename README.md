@@ -1,4 +1,4 @@
-# Postman file generator
+# Postman collection generator
 
 <p><img src="https://github.com/matijajanc/postman/blob/master/images/postman.png"></p>
 
@@ -44,7 +44,7 @@ Currently it supports bearer token authorization, if you have other wishes pleas
 <p><img src="https://github.com/matijajanc/postman/blob/master/images/postman_authorization.png"></p>
 
 ## Requirements
-- Laravel 8 & Lumen 8 (it works with older version of Laravel/Lumen also, but you need to provide "method" property in Postman attribute definition)
+- Laravel 8 or Lumen 8 (it works with older version of Laravel/Lumen also, but you need to provide "method" property in Postman attribute definition)
 - PHP ^8.0
 - If you want to use JWT bearer token then you need to configure it first https://jwt-auth.readthedocs.io/en/develop/laravel-installation/
 
