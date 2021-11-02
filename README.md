@@ -3,10 +3,8 @@
 <p><img src="https://github.com/matijajanc/postman/blob/master/images/postman.png"></p>
 
 ### Installation
-
-// todo Publish to packagist
 ```
-composer require ...
+composer require matijajanc/postman
 ```
 
 ### Laravel
